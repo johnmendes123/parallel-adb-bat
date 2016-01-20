@@ -1,9 +1,11 @@
 @echo off
-SET "ARGUMENTS=%*"
+SET ARGUMENTS=%~1
 
-if [%ARGUMENTS%] == [] (
+if "%ARGUMENTS%" == "" (
     GOTO EOF
 )
+
+echo "%ARGUMENTS%"
 
 SETLOCAL ENABLEDELAYEDEXPANSION 
 :: INSTALL ON ALL ATTACHED DEVICES ::
@@ -22,6 +24,7 @@ FOR /F "tokens=1,2 skip=1" %%A IN ('adb devices') DO (
 		)
 				
 		if !TRUTH! == "TRUE" (
+		    echo "adb -s !SERIAL! %ARGUMENTS%"
 		    call adb -s !SERIAL! %ARGUMENTS%
 			GOTO EOF
 		)
