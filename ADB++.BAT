@@ -5,8 +5,6 @@ if "%ARGUMENTS%" == "" (
     GOTO EOF
 )
 
-echo "%ARGUMENTS%"
-
 SETLOCAL ENABLEDELAYEDEXPANSION 
 :: INSTALL ON ALL ATTACHED DEVICES ::
 FOR /F "tokens=1,2 skip=1" %%A IN ('adb devices') DO (
