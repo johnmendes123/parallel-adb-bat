@@ -5,6 +5,8 @@ if "%ARGUMENTS%" == "" (
     GOTO EOF
 )
 
+SET "ARGUMENTS=%ARGUMENTS:""="%"
+
 SETLOCAL ENABLEDELAYEDEXPANSION 
 :: INSTALL ON ALL ATTACHED DEVICES ::
 FOR /F "tokens=1,2 skip=1" %%A IN ('adb devices') DO (
